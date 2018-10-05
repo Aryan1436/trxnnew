@@ -1,0 +1,9 @@
+.my-box{
+    border: 1px solid #727272;
+    border-radius: 5px;
+    min-height: 300px;
+    
+}
+.list-group-item{
+    cursor: pointer;
+}

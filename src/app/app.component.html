@@ -1,0 +1,71 @@
+<!-- The content below is only a placeholder and can be replaced.
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
+ -->
+ <div class="container-fluid">
+    <div class="jumbotron">
+   <div class="row">
+     <div class="col-md-12">
+       <div class="row">
+          <div class="col-md-6 pull-right">
+            <input type="text" class="form-control" placeholder="Search movie,Cast..." #name/>
+            <button  class="btn-primary" value="Search" (click)="getMovies(name.value)">Search</button>
+            </div>
+       </div>
+       <div class="row">
+          <div class="col-md-4 my-box">
+              <ul class="list-group">
+                  
+                <li class="list-group-item" *ngFor="let item of movies">
+                  <div class="movieitem" (click)="getMovieDetails(item.id)">
+                    <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" width="25px" height="25px" />
+                    <h4 class="pull-right">{{item.original_title}}</h4>
+                    <h6>Rating :{{item.vote_average}}</h6>
+                    <h6>Released :{{item.release_date}}</h6>
+                    
+                    
+                  </div>
+                  </li>
+                  
+                  
+                </ul>
+          </div>
+          <div class="col-md-8 my-box">
+            <div *ngIf="selected_movie!==''">
+                <h3>{{selected_movie.original_title}}</h3>
+                <h5>Released :{{selected_movie.release_date}}</h5>
+                <h5>Budget :${{selected_movie.budget}}</h5>
+                <h5>Production Companies </h5>
+                <ul *ngIf="selected_movie.production_companies?.length>0">
+                  <li *ngFor="let i of getProductionCompanies(selected_movie)">{{i.name}}</li>
+                </ul>
+                <h6>Overview: {{selected_movie.overview}}</h6>
+            </div>
+            <div *ngIf="selected_movie==''">
+              <p>Please select a movie to to view its details</p>
+            </div>
+            
+            </div>
+       </div>
+       
+       
+     </div>
+   </div>
+    </div>
+ </div>
